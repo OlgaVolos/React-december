@@ -26,6 +26,7 @@ function App() {
         },
     ]);
     const [itemsToHide, setItemToHide] = useState([]);
+
 // const removeFirst = () => {
 //   const newArr = [...arr]
 //   newArr.shift();
@@ -37,10 +38,8 @@ function App() {
 //     newArr.pop();
 //     changeArr(newArr)
 //   }
-
     // removeFirst  і removeLast  можна зробити однією функцією.
     //тоді в онклік ми функцію викликаємо і передаємо аргументи
-
     // const handleArrChange = (itemToRemove) => {
     // if(itemToRemove !== 'first' && itemToRemove !== 'last') return;
     //
@@ -51,11 +50,11 @@ function App() {
     // // itemToRemove === 'first' ? newArr.shift() : newArr.pop()
     //   changeArr(newArr);
     // }
-
 //Якщо нам треба повернути початковий масив назад, то ми мусимо створити
 // UseState з вхідним аргументом [], щоб туди складати вирізані елементи нашими кнопками.
 // Для цього ми профільтруємо масив і, якщо він містить елемент з відповідним ід,
 // то ці елементи будуть складатися в пустий масив, який ми оголосили в юзстейт
+
     const filteredArr = arr.filter(value => !itemsToHide.includes(value.id))
 
     const firstHandleArrChange = () => {
@@ -90,23 +89,17 @@ function App() {
         setItemToHide(clone);
     }
 
-
-    const changeColor = (itemToRemove)=> {
-        const black = document.getElementsByClassName("App");
-        for (const blackElement of black) {
-            blackElement.classList.toggle('black')
-        }
-    } //як зробити, щоб окрема лішка змінювала колір, а не всі? по id змінюється лише перша!!!
-
-
     return (
         <div>
             <ul>
                 {filteredArr.map(value => (
-                    <li id='li'
-                        onClick={() => changeColor()}
+                    <li id={value.id}
+                        onClick={({target}) => target.classList.toggle('black')}
                         className={'App'} key={value.id}>{value.title} -
-                        <button onClick={() => deleteItem(value)}>Remove</button>
+                        <button onClick={(e) => {
+                            e.stopPropagation();
+                            deleteItem(value)
+                        }}>Remove</button>
                     </li>))}
             </ul>
             <button onClick={firstHandleArrChange}>Delete first</button>
