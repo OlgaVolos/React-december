@@ -1,0 +1,17 @@
+.App{
+
+    width: 200px;
+    height: 50px;
+    border: solid 2px red;
+    border-radius: 15px;
+    text-align: center;
+}
+.black{
+    width: 200px;
+    height: 50px;
+    border: solid 2px red;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    background: black;
+}
