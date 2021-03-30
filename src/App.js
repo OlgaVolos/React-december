@@ -91,20 +91,20 @@ function App() {
     }
 
 
-    const changeColor = (itemToRemove)=> {
-        const black = document.getElementsByClassName("App");
-        for (const blackElement of black) {
-            blackElement.classList.toggle('black')
-        }
-    } //як зробити, щоб окрема лішка змінювала колір, а не всі? по id змінюється лише перша!!!
+    // const changeColor = (itemToRemove)=> {
+    //     const black = document.getElementsByClassName("App");
+    //     for (const blackElement of black) {
+    //         blackElement.classList.toggle('black')
+    //     }
+    // } //як зробити, щоб окрема лішка змінювала колір, а не всі? по id змінюється лише перша!!!
 
 
     return (
         <div>
             <ul>
                 {filteredArr.map(value => (
-                    <li id='li'
-                        onClick={() => changeColor()}
+                    <li id={value.id}
+                        onClick={({target}) => target.classList.toggle('black')}
                         className={'App'} key={value.id}>{value.title} -
                         <button onClick={() => deleteItem(value)}>Remove</button>
                     </li>))}
