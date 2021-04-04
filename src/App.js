@@ -15,7 +15,7 @@ function App() {
     const [error, setError] = useState('')
 
     const fetchData = async () => {
-        const response = await fetch(`${BASE_URL}/${endpoint}/${id}`);
+        const response = await fetch(`${BASE_URL}/${endpoint.toLowerCase().trim()}/${id.trim()}`);
         const data = await response.json();
         if (id) {
             setSingleItem(data);
