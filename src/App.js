@@ -1,9 +1,8 @@
+import React from 'react';
 
-
-function App() {
+function App(props) {
   return (
-    <div>
-    </div>
+      <div></div>
   );
 }
 
