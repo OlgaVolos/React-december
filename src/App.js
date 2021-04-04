@@ -13,6 +13,7 @@ const [items, setItems] = useState([])
   let [endpoint, setEndpoint] = useState('')
   let [id, setId] = useState('')
   const [error, setError] = useState('')
+
   const fetchData = async () => {
     const response = await fetch(`${BASE_URL}/${endpoint}/${id}`);
     const data = await response.json();
