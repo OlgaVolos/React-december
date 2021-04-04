@@ -16,18 +16,18 @@ function App() {
         // перевіряємо, чи 1-й інпут не є пустий і чи введено ендпоінт
         if(!endpoint){
             return setError("first input is empty")
-        };
+        }
         if(!AVALAIBLE_RESOURCE.includes(endpoint.toLowerCase().trim())) {
             return setError("write one of list: 'posts', 'comments', 'albums', 'photos', 'todos', 'users' ")
-        };
+        }
         // перевіряємо, чи другий інпут є числом і чи є в межах
         const idToNum = Number(id)
         if (!idToNum &&  id !== '' && idToNum !== 0){
             return setError('use numerical value from 1 to 100')
-        };
+        }
         if((idToNum<1 || idToNum>100) &&  id !== '')  {
             return setError("write from 1 to 100")
-        };
+        }
 
         fetchData()
         setError("") //почистить еррор
