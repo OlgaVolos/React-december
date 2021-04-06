@@ -40,23 +40,34 @@ function App() {
         if (checkbox3.current.checked) console.log(checkbox3.current.value);
 
 
+
     }
 
     // 2.2
 
-    const [chek1, setChek1] = useState(false)
-    const [chek2, setChek2] = useState(false)
-    const [chek3, setChek3] = useState(false)
+    const endpoint = ['user',
+        'posts',
+        'todos',]
+    const [form, setForm] = useState(endpoint[0]);
 
-    const [input1, setInput1] = useState('user');
-    const [input2, setInput2] = useState('posts');
-    const [input3, setInput3] = useState('todos');
 
-    const onSubmit3 = () => {
-        if (!chek1) console.log(input1);
-        console.log(input2);
-        console.log(input3);
-    }
+
+
+    const [x, setX] = useState(false);
+
+    const handler = (e) => {
+        e.preventDefault()
+        const { target } = e;
+        const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+        const { name, } = target;
+
+
+        console.log(setForm(form => ({ ...form, [name]: value })));
+
+
+    };
+
+    // }
     // *******************************************************************
 
     // 3.1. Create uncontrolled radio
@@ -68,15 +79,14 @@ function App() {
         e.preventDefault();
         setGende({gende: e.target.value});
         console.log(e.target.value)
-
-
     }
     // 3.2. Create controlled radio
 
     const [gender, setGender] = useState('Male');
-    const changeGender1 = () => {
+    const changeGender1 = (e) => {
 
         console.log(gender)
+
     }
 
     return (
@@ -124,21 +134,18 @@ function App() {
             </div>
             <div>
                 <h3>2.2. Controlled input-checkbox:</h3>
-
-                <input type="checkbox" value={input1} defaultChecked={chek1}
-                       onChange={({target: {value}}) => setInput1(value)} name="user" id="user"/>
+                <form onSubmit={handler}>
+                <input type="checkbox" defaultChecked={x} onChange={() => setX(!x)} value={form} name="user" id="user"/>
                 <label htmlFor="user">user</label>
                 <br/>
-                <input type="checkbox" value={input2} defaultChecked={chek2}
-                       onChange={({target: {value}}) => setInput2(value)} name="posts" id="posts"/>
+                <input type="checkbox" defaultChecked={x} onChange={() => setX(!x)} value={form} name="posts" id="posts"/>
                 <label htmlFor="posts">posts</label>
                 <br/>
-                <input type="checkbox" value={input3} defaultChecked={chek3}
-                       onChange={({target: {value}}) => setInput3(value)} name="todos" id="todos"/>
+                <input type="checkbox" defaultChecked={x} onChange={() => setX(!x)} value={form} name="todos" id="todos"/>
                 <label htmlFor="todos">todos</label>
                 <br/>
-                <button onClick={onSubmit3} type='submit'>Submit</button>
-
+                <button type='submit'>Submit</button>
+                </form>
             </div>
             <hr/>
             <div>
