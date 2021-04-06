@@ -3,3 +3,6 @@
     background: antiquewhite;
     height: 50px;
 }
+button{
+    flex: 1;
+}
