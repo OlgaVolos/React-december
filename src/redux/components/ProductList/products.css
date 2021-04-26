@@ -1,0 +1,14 @@
+.product-item {
+    width: 25%;
+    border: red solid 2px;
+    margin: 10px;
+}
+button{
+   margin: 5px;
+
+}
+
+.product-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}

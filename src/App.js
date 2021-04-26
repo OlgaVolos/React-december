@@ -1,8 +1,14 @@
 import React from 'react';
+import ProductList from "./redux/components/ProductList/ProductList";
+import Header from "./redux/components/header/Header";
 
-function App(props) {
+function App() {
   return (
-      <div></div>
+      <div>
+          <Header/>
+        <ProductList/>
+      </div>
+
   );
 }
 
