@@ -16,3 +16,20 @@ header span {
 
 
 }
+.product-item {
+    width: 25%;
+    border: red solid 2px;
+    margin: 10px;
+
+}
+button{
+    border: white solid 3px ;
+    border-radius: 12px;
+    margin: 5px;
+
+}
+
+.product-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}

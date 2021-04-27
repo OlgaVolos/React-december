@@ -1,6 +1,9 @@
 import React from 'react';
-import ProductList from "./redux/components/ProductList/ProductList";
-import Header from "./redux/components/header/Header";
+import {Header} from './components'
+import ProductList from "./components/ProductList";
+
+// такий імпорт бо різні види функцій в компонентах!!!
+
 
 function App() {
   return (

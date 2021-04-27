@@ -4,9 +4,12 @@ import {
     startProductsLoading,
     endProductsLoading,
     setProduct,
-    loadProducts, toggleItemInCart, toggleItemInWishlist
-} from '../../action-creators'
-import './products.css'
+    loadProducts,
+    toggleItemInCart,
+    toggleItemInWishlist
+} from '../redux/action-creators'
+import './style.css'
+import {Product} from "./Product";
 
 function ProductList() {
     const {products, isLoading} = useSelector(store => store.products);
@@ -47,27 +50,14 @@ function ProductList() {
             {isLoading && (
                 <h1 style={{color: 'red'}}>LOADING</h1>)}
             {!isLoading && !!products.length && products.map(el => (
-                <div key={el.id} className={'product-item'}>
-                    <h3>{el.title}</h3>
-                    <h4>{el.price}</h4>
-                    <p>{el.description}</p>
-                    <button style={{
-                        backgroundColor: productsInWishlist.includes(el.id) ? 'red' : 'green'
-                    }}
-                            onClick={() => dispatch(toggleItemInWishlist(el.id))}>
-                        {productsInWishlist.includes(el.id) ? 'remove from wishlist' : 'add to wishlist'}
-                    </button>
-                    <button style={{
-                        backgroundColor: productsInCart.includes(el.id) ? 'red' : 'green'
-                    }}
-                            onClick={() => dispatch(toggleItemInCart(el.id))}>
-                        {productsInCart.includes(el.id) ? 'remove from cart' : 'add to cart'}
-                    </button>
-                    <img style={{width: '100%'}} src={el.image} alt=""/>
+                <Product product={el}
+                         key={el.id}
+                         onCartClick={() => dispatch(toggleItemInCart(el.id))}
+                         onWishlistClick={() => dispatch(toggleItemInWishlist(el.id))}
+                         IsInCart={productsInCart.includes(el.id)}
+                         IsInWishlist={productsInWishlist.includes(el.id)}
+                /> ))}
 
-
-                </div>
-            ))}
         </div>
     );
 }

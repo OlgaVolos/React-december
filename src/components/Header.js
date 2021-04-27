@@ -1,9 +1,8 @@
 import React, {useMemo} from 'react';
-import './header.css'
-import {toggleItemInCart} from '../../action-creators'
+import './style.css'
 import {useSelector} from "react-redux";
 
-function Header() {
+export const Header = () => {
     const {products} = useSelector(store => store.products);
     const {productsInCart} = useSelector(store => store.cart);
     const {productsInWishlist} = useSelector(store => store.wishlist);
@@ -33,4 +32,4 @@ function Header() {
     );
 }
 
-export default Header;
+
