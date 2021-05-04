@@ -1,11 +1,14 @@
 import React, {useMemo} from 'react';
 import './style.css'
 import {useSelector} from "react-redux";
+import {useHistory} from "react-router-dom";
 
 export const Header = () => {
     const {products} = useSelector(store => store.products);
     const {productsInCart} = useSelector(store => store.cart);
     const {productsInWishlist} = useSelector(store => store.wishlist);
+
+    const history = useHistory()
 
     const calculatedCart = useMemo(()=> {
         return products
@@ -23,7 +26,7 @@ export const Header = () => {
 
     return (
        <header className={'header'}>
-           <h2>Header</h2>
+           <h2 onClick={()=>history.push('/')}>Header</h2>
            <div className={'counter'} >
                <span>wishlist: {productsInWishlist.length} ($ {calculatedWishlist})</span>
                <span>cart: {productsInCart.length} ($ {calculatedCart})</span>

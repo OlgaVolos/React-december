@@ -17,6 +17,7 @@ const persister = (store) => (next) => (action) => {
     const {wishlist, cart} = store.getState();
     localStorage.setItem('wishlist', JSON.stringify(wishlist))
     localStorage.setItem('cart', JSON.stringify(cart))
+    console.log(localStorage);
 }
 const middlewares = [thunk, persister];
 export const store = createStore(

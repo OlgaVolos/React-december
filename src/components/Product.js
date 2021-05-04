@@ -1,11 +1,12 @@
 import React from 'react';
 import './style.css'
+import {useHistory} from "react-router-dom";
 
 export const Product = ({product, onCartClick, onWishlistClick, IsInCart, IsInWishlist}) => {
-
+const history = useHistory()
 
     return (
-            <div key={product.id} className={'product-item'}>
+            <div key={product.id} >
                 <h3>{product.title}</h3>
                 <h4>{product.price}</h4>
                 <p>{product.description}</p>
@@ -24,7 +25,9 @@ export const Product = ({product, onCartClick, onWishlistClick, IsInCart, IsInWi
 
                     {IsInCart? 'remove from cart' : 'add to cart'}
                 </button>
+                <button onClick={() => history.push(`/products/${product.id}`)}>Show Details</button>
                 <img style={{width: '75%'}} src={product.image} alt=""/>
+
 
 
             </div>
